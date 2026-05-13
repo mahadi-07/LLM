@@ -1,0 +1,38 @@
+# Environment variable files
+.env
+.env.*
+*.env
+
+# Local config / secret files
+*.local
+*.secret
+secrets.*
+config.local.*
+
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Node.js environment files
+node_modules/
+
+# IDE environment settings
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Temporary files
+tmp/
+temp/
