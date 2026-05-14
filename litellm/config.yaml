@@ -1,0 +1,27 @@
+
+model_list:
+  - model_name: local-gemma-*
+    litellm_params:
+      model: openai/gemma-4-E4B-Q4
+      api_base: http://0.0.0.0:8080/v1
+      api_key: dummy
+      input_cost_per_token: 0.0001
+      output_cost_per_token: 0.0002
+
+  - model_name: glm-5.1
+    litellm_params:
+      model: zai/glm-5.1
+      api_key: os.environ/ZAI_API_KEY
+      api_base: https://api.z.ai/api/coding/paas/v4
+      input_cost_per_token: 0.000001
+      output_cost_per_token: 0.000002
+
+general_settings:
+  master_key: sk-my-super-secret-key
+  database_url: postgresql://postgres:postgres@localhost:5432/litellm
+  drop_params: false
+  pass_through_all_models: true
+  store_model_in_db: true
+
+  # Store full request + response in DB.
+  store_prompts_in_spend_logs: true

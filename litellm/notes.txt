@@ -1,0 +1,1 @@
+prisma generate --schema llm-env/lib/python3.11/site-packages/litellm_proxy_extras/schema.prisma
