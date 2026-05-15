@@ -15,6 +15,7 @@ model_list:
       api_key: os.environ/ZAI_API_KEY
       input_cost_per_token: 0.0005
       output_cost_per_token: 0.0005
+      supports_function_calling: true
 
 general_settings:
   master_key: sk-my-super-secret-key
@@ -29,6 +30,8 @@ general_settings:
   function_calling: true
   mcp_enabled: true
   drop_params: false
+
+  allow_mcp_tools: true
 
 
 mcp_servers:
