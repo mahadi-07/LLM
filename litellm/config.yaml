@@ -19,6 +19,7 @@ model_list:
 
 general_settings:
   master_key: sk-my-super-secret-key
+  
   database_url: postgresql://postgres:postgres@localhost:5432/litellm
 
   store_model_in_db: true
@@ -35,9 +36,13 @@ general_settings:
 
 
 litellm_settings:
-  enable_mcp: true
-  experimental_features:
-    mcp_openapi: true
+  max_internal_user_budget: 0
+  internal_user_budget_duration: "1mo" # reset every month
+  # enable_mcp: true
+  # experimental_features:
+  #   mcp_openapi: true
+
+
 
 mcp_servers:
   utility_server:
