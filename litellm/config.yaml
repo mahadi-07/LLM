@@ -25,43 +25,34 @@ model_list:
       input_cost_per_token: 0.0005
       output_cost_per_token: 0.0005
       supports_function_calling: true
-  
-  - model_name: groq-ai
-    litellm_params:
-      model: qwen/qwen3-32b
-      api_key: os.environ/GROQ_API_KEY
-      custom_llm_provider: groq
-  - model_name: groq-ai
-    litellm_params:
-      model: llama-3.3-70b-versatile
-      api_key: os.environ/GROQ_API_KEY
-      custom_llm_provider: groq
-  # - model_name: groq-ai
-  #   litellm_params:
-  #     model: whisper-large-v3
-  #     api_key: os.environ/GROQ_API_KEY
-  #     custom_llm_provider: groq
-  - model_name: groq-ai
-    litellm_params:
-      model: meta-llama/llama-prompt-guard-2-86m
-      api_key: os.environ/GROQ_API_KEY
-      custom_llm_provider: groq
 
+  # Gemini Model List
+  - model_name: gemma-4-31b-it
+    litellm_params:
+      model: gemini/gemma-4-31b-it
+      api_key: os.environ/GEMINI_API_KEY
 
-  # - model_name: llama-3.3-70b-versatile
+  # Groq Model List
+  - model_name: groq-chat
+    litellm_params:
+      model: groq/qwen/qwen3-32b
+      api_key: os.environ/GROQ_API_KEY
+
+  - model_name: groq-chat
+    litellm_params:
+      model: groq/llama-3.3-70b-versatile
+      api_key: os.environ/GROQ_API_KEY
+
+  - model_name: groq-guard
+    litellm_params:
+      model: groq/meta-llama/llama-prompt-guard-2-86m
+      api_key: os.environ/GROQ_API_KEY
+
+  # - model_name: groq-whisper
   #   litellm_params:
-  #     model: llama-3.3-70b-versatile
+  #     model: groq/whisper-large-v3
   #     api_key: os.environ/GROQ_API_KEY
-  
-  # - model_name: whisper-large-v3
-  #   litellm_params:
-  #     model: whisper-large-v3
-  #     api_key: os.environ/GROQ_API_KEY
-  
-  # - model_name: llama-prompt-guard-2-86m
-  #   litellm_params:
-  #     model: meta-llama/llama-prompt-guard-2-86m
-  #     api_key: os.environ/GROQ_API_KEY
+  #     drop_params: ["max_tokens"]
 
 router_settings:
   routing_strategy: simple-shuffle
@@ -88,15 +79,16 @@ general_settings:
   
   store_all_api_requests: true 
 
-  pass_through_all_models: true
   function_calling: true
   mcp_enabled: true
-  drop_params: false
 
   allow_mcp_tools: true
+  
+  # drop_params: true
 
 
 # litellm_settings:
+#   drop_params: true
   # max_internal_user_budget: 0
   # internal_user_budget_duration: "1mo" # reset every month
   # enable_mcp: true
