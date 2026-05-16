@@ -1,5 +1,5 @@
 model_list:
-  - model_name: local-gemma
+  - model_name: local
     litellm_params:
       model: unsloth/gemma-4-E4B-it-GGUF:Q8_0
       api_base: http://localhost:8080/v1
@@ -8,6 +8,15 @@ model_list:
       input_cost_per_token: 0.0001
       output_cost_per_token: 0.0002
 
+  - model_name: local
+    litellm_params:
+      model: llama3.1:8b
+      api_base: http://localhost:11434
+      api_key: dummy
+      custom_llm_provider: ollama
+      input_cost_per_token: 0.00004
+      output_cost_per_token: 0.00006
+  
   - model_name: glm-5.1
     litellm_params:
       model: zai/glm-5.1
@@ -16,6 +25,58 @@ model_list:
       input_cost_per_token: 0.0005
       output_cost_per_token: 0.0005
       supports_function_calling: true
+  
+  - model_name: groq-ai
+    litellm_params:
+      model: qwen/qwen3-32b
+      api_key: os.environ/GROQ_API_KEY
+      custom_llm_provider: groq
+  - model_name: groq-ai
+    litellm_params:
+      model: llama-3.3-70b-versatile
+      api_key: os.environ/GROQ_API_KEY
+      custom_llm_provider: groq
+  # - model_name: groq-ai
+  #   litellm_params:
+  #     model: whisper-large-v3
+  #     api_key: os.environ/GROQ_API_KEY
+  #     custom_llm_provider: groq
+  - model_name: groq-ai
+    litellm_params:
+      model: meta-llama/llama-prompt-guard-2-86m
+      api_key: os.environ/GROQ_API_KEY
+      custom_llm_provider: groq
+
+
+  # - model_name: llama-3.3-70b-versatile
+  #   litellm_params:
+  #     model: llama-3.3-70b-versatile
+  #     api_key: os.environ/GROQ_API_KEY
+  
+  # - model_name: whisper-large-v3
+  #   litellm_params:
+  #     model: whisper-large-v3
+  #     api_key: os.environ/GROQ_API_KEY
+  
+  # - model_name: llama-prompt-guard-2-86m
+  #   litellm_params:
+  #     model: meta-llama/llama-prompt-guard-2-86m
+  #     api_key: os.environ/GROQ_API_KEY
+
+router_settings:
+  routing_strategy: simple-shuffle
+  # return_model_in_response: true
+  # routing_groups:
+  #   - group_name: group-1
+  #     models: [local, meta-llama/llama-prompt-guard-2-86m]
+  #     routing_strategy: latency-based-routing
+  #     routing_strategy_args:
+  #       ttl: 60          # short window — react quickly to latency changes
+    # - group_name: batch
+    #   models: [gpt-4o-mini, llama-70b]
+    #   routing_strategy: usage-based-routing-v2
+    #   routing_strategy_args:
+    #     rpm: 10000
 
 general_settings:
   master_key: sk-my-super-secret-key
@@ -35,9 +96,9 @@ general_settings:
   allow_mcp_tools: true
 
 
-litellm_settings:
-  max_internal_user_budget: 0
-  internal_user_budget_duration: "1mo" # reset every month
+# litellm_settings:
+  # max_internal_user_budget: 0
+  # internal_user_budget_duration: "1mo" # reset every month
   # enable_mcp: true
   # experimental_features:
   #   mcp_openapi: true

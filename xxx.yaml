@@ -1,0 +1,9 @@
+model_list:
+- model_name: qwen3-32b
+  litellm_params:
+    model: qwen/qwen3-32b
+    api_key: os.environ/GROQ_API_KEY
+- model_name: llama-3.3-70b-versatile
+  litellm_params:
+    model: llama-3.3-70b-versatile
+    api_key: os.environ/GROQ_API_KEY
